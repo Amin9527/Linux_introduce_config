@@ -9,3 +9,20 @@
 
 二、dev目录：（device）Linux系统中使用的外部设备文件一般都存放在/dev目录下，但不是外部设备的驱动程序，实际上是一个访问外部设备的端口。
               访问这些外部设备和访问一个文件、一个目录没有任何区别。设备文件分为两种：块设备文件（b）和字符设备文件（c）
+
+三、/bin、/sbin、/usr/bin、/usr/sbin、/usr/local/bin、/usr/local/sbin
+	系统级别：
+	/bin: 所用用户都可以使用的一些程序、指令（例如：cat、pwd、ps等）
+	/sbin: 一般只有root用户才会用到的一些程序、指令(基本是一些网络相关的，例如ipconfig、ping等)
+
+	用户级别：
+	/usr/bin: 所有用户都可以使用的一些程序、指令。一般都是系统预装自带的东西，并且会随着系统的升级而进行升级、更新、改变（例如：vim、python、MySQL、mongo等）
+	/usr/sbin: 同上，只是一般只有root才会用到
+
+	/usr/local/bin: 所有用户都可以使用的一些软件、使用户自己下载或者自己写的可执行程序指令（例如：用户自己下载的redis）
+	/usr/local/sbin: 一般只有root会使用的，自己下载的软件。
+
+	一般配置自己的环境变量，把6个路径加到环境变量里面。配置所有人的环境变量在/etc/profile，配置自己的在~/.profile
+	配置完立即生效：source /etc/profile、 ~/.profile 
+	（备注：网上有文章说，/sbin、/usr/sbin、/usr/local/sbin是只有root才可以使用的软件、指令。但亲自测试后，在普通用户~/.profile中将/sbin也加到环境变量里，
+	ipconfig指令也可以正常使用，真相有待进一步探索）
